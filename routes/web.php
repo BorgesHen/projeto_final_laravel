@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ClientesController;
+use App\Http\Controllers\LivroController;
+use App\Http\Controllers\BibliotecariosController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -18,3 +21,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+    Route::resource('clientes', ClientesController::class);
+    Route::resource('livro', LivroController::class);
+    Route::resource('bibliotecarios', BibliotecariosController::class);
