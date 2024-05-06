@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cliente;
+
 
 class ClientesController extends Controller
 {
@@ -32,11 +34,10 @@ class ClientesController extends Controller
             'nome'=> $request->input('nome'),
             'telefone'=>$request->input('telefone'),
             'email'=>$request->input('email'),
-            'endereco'=>$request->input('endereco'),
-            'cliente_ID'=>$request->input('cliente_ID')
+            'endereco'=>$request->input('endereco')
         ]);
         $cliente->save();
-        return redirect()->route('cliente.index');
+        return redirect()->route('clientes.index');
     }
 
     /**
