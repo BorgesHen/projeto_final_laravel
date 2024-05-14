@@ -45,7 +45,9 @@ class ClientesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
+        $cliente = Cliente::findOrFail($id);
+        return view('clientes.show', compact('cliente'));
     }
 
     /**
@@ -53,7 +55,8 @@ class ClientesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -61,7 +64,16 @@ class ClientesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        
+        $cliente->nome = $request->input('nome');
+        $cliente->telefone = $request->input('telefone');
+        $cliente->email = $request->input('email');
+        $cliente->endereco = $request->input('endereco');
+        // Salva as alterações no autor
+        $cliente->save();
+        // Redireciona para a rota 'autores.index' após salvar
+        return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
     }
 
     /**
@@ -69,6 +81,9 @@ class ClientesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        $cliente->delete();
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente excluido com sucesso!');
     }
 }

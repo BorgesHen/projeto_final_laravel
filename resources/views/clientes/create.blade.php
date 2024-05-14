@@ -1,5 +1,6 @@
-<body>
+<x-app-layout>
     <div class="container">
+    <link rel="stylesheet" href="{{ asset('css/clientes/create.css') }}">
         <h1>Novo Cliente</h1>
         <form action="{{ route('clientes.store') }}" method="POST">
             @csrf
@@ -19,8 +20,8 @@
                 <label for="endereco">Endereco:</label>
                 <input type="text" name="endereco">
             </div>
-            <button type="submit" class="btn btn-success">Salvar</button>
+            <button type="submit" class="btn btn-success dark:text-white">Salvar</button>
             <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Cancelar</a>
         </form>
     </div>
-</body>
+</x-app-layout>
