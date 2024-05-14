@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Cliente;
+
 
 class ClientesController extends Controller
 {
@@ -32,11 +34,10 @@ class ClientesController extends Controller
             'nome'=> $request->input('nome'),
             'telefone'=>$request->input('telefone'),
             'email'=>$request->input('email'),
-            'endereco'=>$request->input('endereco'),
-            'cliente_ID'=>$request->input('cliente_ID')
+            'endereco'=>$request->input('endereco')
         ]);
         $cliente->save();
-        return redirect()->route('cliente.index');
+        return redirect()->route('clientes.index');
     }
 
     /**
@@ -44,7 +45,9 @@ class ClientesController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
+        $cliente = Cliente::findOrFail($id);
+        return view('clientes.show', compact('cliente'));
     }
 
     /**
@@ -52,7 +55,8 @@ class ClientesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -60,7 +64,16 @@ class ClientesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        
+        $cliente->nome = $request->input('nome');
+        $cliente->telefone = $request->input('telefone');
+        $cliente->email = $request->input('email');
+        $cliente->endereco = $request->input('endereco');
+        // Salva as alterações no autor
+        $cliente->save();
+        // Redireciona para a rota 'autores.index' após salvar
+        return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
     }
 
     /**
@@ -68,6 +81,9 @@ class ClientesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        $cliente->delete();
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente excluido com sucesso!');
     }
 }
