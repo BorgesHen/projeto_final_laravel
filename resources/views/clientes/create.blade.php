@@ -5,12 +5,12 @@
         <form action="{{ route('clientes.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="nome">Nome:</label>
+                <label for="nome">Nome:</a></label>
                 <input type="text" name="nome">
             </div>
             <div class="form-group">
                 <label for="telefone">Telefone:</label>
-                <input type="int" name="telefone">
+                <input type="text" name="telefone">
             </div>
             <div class="form-group">
                 <label for="email">Email:</label>

@@ -18,10 +18,10 @@
                     <x-nav-link :href="route('clientes.index')" :active="request()->routeIs('clientes.index')">
                     {{ __('Clientes') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('clientes.index')" :active="request()->routeIs('bibliotecarios.index')">
+                    <x-nav-link :href="route('bibliotecarios.index')" :active="request()->routeIs('bibliotecarios.index')">
                     {{ __('Bibliotecarios') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('clientes.index')" :active="request()->routeIs('livros.index')">
+                    <x-nav-link :href="route('livro.index')" :active="request()->routeIs('livros.index')">
                     {{ __('Livros') }}
                     </x-nav-link>
                 </div>

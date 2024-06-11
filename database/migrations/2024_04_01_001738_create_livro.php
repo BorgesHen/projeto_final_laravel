@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->string('autor');
             $table->string('genero');
-            $table->datetime('dataLanc');
+            $table->date('dataLanc');
             $table->timestamps();
         });
     }

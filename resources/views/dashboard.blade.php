@@ -15,5 +15,8 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg dark:text-white">
             <h1>ESTE SITE É UMA SIMULAÇÃO DE UMA BIBLIOTECA</h1>
+            <br>
+            <img src="{{ asset('img/biblioteca.png')}}">
+
             </div>
 </x-app-layout>

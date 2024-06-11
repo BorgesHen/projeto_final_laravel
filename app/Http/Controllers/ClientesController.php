@@ -73,7 +73,7 @@ class ClientesController extends Controller
         // Salva as alterações no autor
         $cliente->save();
         // Redireciona para a rota 'autores.index' após salvar
-        return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
+        return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso!');
     }
 
     /**

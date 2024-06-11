@@ -1,4 +1,4 @@
-.cliente-details{
+.bibliotecario-details{
     max-width: 800px;
     margin: 0 auto;
     margin-top: 15px;
@@ -15,26 +15,26 @@
     margin-bottom: 30px;
   }
 
-  .cliente-content {
+  .bibliotecario-content {
     background: white;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
   }
 
-  .cliente-meta {
+  .bibliotecario-meta {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
   }
 
-  .cliente-label {
+  .bibliotecario-label {
     width: 200px;
     font-weight: bold;
     color: #555;
   }
 
-  .cliente-info {
+  .bibliotecario-info {
     flex: 1;
   }
 

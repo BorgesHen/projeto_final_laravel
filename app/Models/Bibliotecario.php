@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bibliotecario extends Model
 {
-    protected $table = 'bibliotecario';
-    protected $fillable = ['nome', 'horario', 'secao'];
+    protected $table = 'bibliotecarios';
+    protected $fillable = ['nome', 'horario', 'secao', 'data_publicacao'];
 }
