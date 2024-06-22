@@ -29,14 +29,19 @@ class LivroController extends Controller
      */
     public function store(Request $request)
     {
-        $livro = new Livro([
-            'titulo'=> $request->input('titulo'),
-            'autor'=>$request->input('autor'),
-            'genero'=>$request->input('genero'),
-            'dataLanc'=>$request->input('dataLanc')
+        // Validação
+        $validatedData = $request->validate([
+            'titulo' => 'required|string|max:255',
+            'autor' => 'required|string|max:255',
+            'genero' => 'required|string|max:255',
+            'dataLanc' => 'required|date',
         ]);
+
+        // Cria um novo livro com os dados validados
+        $livro = new Livro($validatedData);
         $livro->save();
-        return redirect()->route('livro.index');
+
+        return redirect()->route('livro.index')->with('success', 'Livro criado com sucesso!');
     }
 
     /**
@@ -63,14 +68,18 @@ class LivroController extends Controller
     public function update(Request $request, string $id)
     {
         $livro = Livro::findOrFail($id);
-        
-        $livro->titulo = $request->input('titulo');
-        $livro->autor = $request->input('autor');
-        $livro->genero = $request->input('genero');
-        $livro->dataLanc = $request->input('dataLanc');
-        // Salva as alterações no autor
-        $livro->save();
-        // Redireciona para a rota 'autores.index' após salvar
+
+        // Validação
+        $validatedData = $request->validate([
+            'titulo' => 'required|string|max:255',
+            'autor' => 'required|string|max:255',
+            'genero' => 'required|string|max:255',
+            'dataLanc' => 'required|date',
+        ]);
+
+        // Atualiza o livro com os dados validados
+        $livro->update($validatedData);
+
         return redirect()->route('livro.index')->with('success', 'Livro atualizado com sucesso!');
     }
 

@@ -4,6 +4,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Editar Bibliotecario</title>
+        <br>
+        @if ($errors->any())
+        <div class="alert alert-danger dark:text-white">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <br>
     </head>
     <body>
         <div class="container">

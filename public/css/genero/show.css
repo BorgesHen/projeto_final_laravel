@@ -1,5 +1,4 @@
-.genero
--details{
+.genero-details{
     max-width: 800px;
     margin: 0 auto;
     margin-top: 15px;
@@ -16,30 +15,26 @@
     margin-bottom: 30px;
   }
 
-  .genero
-  -content {
+  .genero-content {
     background: white;
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 20px;
   }
 
-  .genero
-  -meta {
+  .genero-meta {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
   }
 
-  .genero
-  -label {
+  .genero-label {
     width: 200px;
     font-weight: bold;
     color: #555;
   }
 
-  .genero
-  -info {
+  .genero-info {
     flex: 1;
   }
 

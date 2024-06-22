@@ -33,7 +33,7 @@
                             <th class="colunas">{{ $bibliotecario->id }}</th>
                             <th id="nome">{{ $bibliotecario->nome }}</th>
                             <th class="colunas">{{ $bibliotecario->secao }}</th>
-                            <th class="colunas">{{ date_format(new DateTime($bibliotecario->dataLanc), 'd/m/Y') }}</th>
+                            <th class="colunas">{{ $bibliotecario->horario }}</th>
 
                             <td class="cab_acoes">
                             <a href="{{ route('bibliotecarios.show', $bibliotecario->id) }}" class="btn btn-info">Detalhes</a>

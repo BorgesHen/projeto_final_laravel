@@ -2,6 +2,17 @@
     <div class="container">
     <link rel="stylesheet" href="{{ asset('css/bibliotecarios/create.css') }}">
         <h1>Novo Bibliotecario</h1>
+        <br>
+        @if ($errors->any())
+        <div class="alert alert-danger dark:text-white">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <br>
         <form action="{{ route('bibliotecarios.store') }}" method="POST">
             @csrf
             <div class="form-group">

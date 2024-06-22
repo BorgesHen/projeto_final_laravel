@@ -2,6 +2,17 @@
     <div class="container">
     <link rel="stylesheet" href="{{ asset('css/livros/create.css') }}">
         <h1>Novo Livro</h1>
+        <br>
+        @if ($errors->any())
+        <div class="alert alert-danger dark:text-white">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <br>
         <form action="{{ route('livro.store') }}" method="POST">
             @csrf
             <div class="form-group">
@@ -13,9 +24,15 @@
                 <input type="text" name="autor">
             </div>
             <div class="form-group">
-                <label for="genero">Gênero:</label>
-                <input type="text" name="genero">
-            </div>
+    <label for="genero_id">Gênero</label>
+    <select class="form-control" name="genero_id" required>
+        <option value="">Selecione um gênero</option>
+        @foreach($generos as $genero) <!-- Corrigido aqui -->
+            <option value="{{ $genero->id }}">{{ $genero->nome }}</option> <!-- Corrigido aqui -->
+        @endforeach
+    </select>
+</div>
+
             <div class="form-group">
                 <label for="dataLancamento">Data de Lançamento:</label>
                 <input type="date" name="dataLanc">

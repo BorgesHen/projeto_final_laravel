@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ClientesController;
 use App\Http\Controllers\LivroController;
 use App\Http\Controllers\BibliotecariosController;
+use App\Http\Controller\GeneroController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 
@@ -28,3 +29,4 @@ require __DIR__.'/auth.php';
     Route::resource('livro', LivroController::class);
     Route::resource('bibliotecarios', BibliotecariosController::class);
     Route::resource('user', UserController::class);
+    Route::resource('generos', GeneroController::class);

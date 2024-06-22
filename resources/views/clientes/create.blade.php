@@ -2,6 +2,17 @@
     <div class="container">
     <link rel="stylesheet" href="{{ asset('css/clientes/create.css') }}">
         <h1>Novo Cliente</h1>
+        <br>
+        @if ($errors->any())
+        <div class="alert alert-danger dark:text-white">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+    <br>
         <form action="{{ route('clientes.store') }}" method="POST">
             @csrf
             <div class="form-group">

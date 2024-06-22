@@ -28,17 +28,23 @@ class ClientesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-    {
-        $cliente = new Cliente([
-            'nome'=> $request->input('nome'),
-            'telefone'=>$request->input('telefone'),
-            'email'=>$request->input('email'),
-            'endereco'=>$request->input('endereco')
-        ]);
-        $cliente->save();
-        return redirect()->route('clientes.index');
-    }
+
+     
+     public function store(Request $request)
+     {
+         $validatedData = $request->validate([
+             'nome' => 'required|string|max:255',
+             'telefone' => 'required|string|max:20',
+             'email' => 'required|email|max:255|unique:clientes,email',
+             'endereco' => 'required|string|max:255',
+         ]);
+ 
+         $cliente = new Cliente($validatedData);
+         $cliente->save();
+ 
+         return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
+     }
+    
 
     /**
      * Display the specified resource.
@@ -65,21 +71,23 @@ class ClientesController extends Controller
     public function update(Request $request, string $id)
     {
         $cliente = Cliente::findOrFail($id);
-        
-        $cliente->nome = $request->input('nome');
-        $cliente->telefone = $request->input('telefone');
-        $cliente->email = $request->input('email');
-        $cliente->endereco = $request->input('endereco');
-        // Salva as alterações no autor
-        $cliente->save();
-        // Redireciona para a rota 'autores.index' após salvar
+
+        $validatedData = $request->validate([
+            'nome' => 'required|string|max:255',
+            'telefone' => 'required|string|max:20',
+            'email' => 'required|email|max:255|unique:clientes,email,' . $cliente->id,
+            'endereco' => 'required|string|max:255',
+        ]);
+
+        $cliente->update($validatedData);
+
         return redirect()->route('clientes.index')->with('success', 'Cliente atualizado com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function deletar(string $id)
     {
         $cliente = Cliente::findOrFail($id);
         $cliente->delete();

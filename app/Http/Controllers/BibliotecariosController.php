@@ -29,13 +29,18 @@ class BibliotecariosController extends Controller
      */
     public function store(Request $request)
     {
-        $bibliotecarios = new Bibliotecario([
-            'nome'=> $request->input('nome'),
-            'secao'=>$request->input('secao'),
-            'horario'=>$request->input('horario'),
+        // Validação
+        $validatedData = $request->validate([
+            'nome' => 'required|string|max:255',
+            'secao' => 'required|string|max:255',
+            'horario' => 'required|string|max:50',
         ]);
-        $bibliotecarios->save();
-        return redirect()->route('bibliotecarios.index');
+
+        // Cria um novo bibliotecário usando os dados validados
+        $bibliotecario = new Bibliotecario($validatedData);
+        $bibliotecario->save();
+
+        return redirect()->route('bibliotecarios.index')->with('success', 'Bibliotecário criado com sucesso!');
     }
 
     /**
@@ -61,15 +66,19 @@ class BibliotecariosController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $bibliotecarios = Bibliotecario::findOrFail($id);
-        
-        $bibliotecarios->nome = $request->input('nome');
-        $bibliotecarios->horario = $request->input('horario');
-        $bibliotecarios->secao = $request->input('secao');
-                // Salva as alterações no autor
-        $bibliotecarios->save();
-        // Redireciona para a rota 'autores.index' após salvar
-        return redirect()->route('bibliotecarios.index')->with('success', 'Bibliotecario atualizado com sucesso!');
+        $bibliotecario = Bibliotecario::findOrFail($id);
+
+        // Validação
+        $validatedData = $request->validate([
+            'nome' => 'required|string|max:255',
+            'secao' => 'required|string|max:255',
+            'horario' => 'required|string|max:50',
+        ]);
+
+        // Atualiza o bibliotecário com os dados validados
+        $bibliotecario->update($validatedData);
+
+        return redirect()->route('bibliotecarios.index')->with('success', 'Bibliotecário atualizado com sucesso!');
     }
 
     /**

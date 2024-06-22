@@ -18,11 +18,11 @@
           <span class="bibliotecario-info">{{ $bibliotecarios->nome }}</span>
         </div>
         <div class="bibliotecario-meta">
-          <span class="bibliotecario-label">Telefone:</span>
+          <span class="bibliotecario-label">Seção:</span>
           <span class="bibliotecario-info">{{ $bibliotecarios->secao }}</span>
         </div>
         <div class="bibliotecario-meta">
-          <span class="bibliotecario-label">Email:</span>
+          <span class="bibliotecario-label">Horário:</span>
           <span class="bibliotecario-info">{{ $bibliotecarios->horario }}</span>
         </div>
       </div>
